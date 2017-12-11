@@ -2,12 +2,17 @@ package ru.sbt.mipt.oop;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static ru.sbt.mipt.oop.DoorEventProcessing.isDoor;
+import static ru.sbt.mipt.oop.DoorEventProcessing.switchDoor;
+import static ru.sbt.mipt.oop.LightEventProcessing.isLight;
+import static ru.sbt.mipt.oop.LightEventProcessing.switchLight;
 import static ru.sbt.mipt.oop.SensorEventType.*;
 
 public class DoorEventProcessingTest {
@@ -29,15 +34,34 @@ public class DoorEventProcessingTest {
     }
 
     @Test
-    public void checkIfDoorIsDoor() {
-        assertTrue(isDoor(new SensorEvent(DOOR_OPEN, "Door_1")));
-        assertTrue(isDoor(new SensorEvent(DOOR_CLOSED, "Door_2")));
+    public void checkIfDoorAndLight() {
+        SensorEvent event1 = new SensorEvent(LIGHT_ON, "Light1");
+        SensorEvent event2 = new SensorEvent(LIGHT_OFF, "Light2");
+        SensorEvent event3 = new SensorEvent(DOOR_OPEN, "Door1");
+        SensorEvent event4= new SensorEvent(DOOR_CLOSED, "Door2");
+        assertFalse(isLight(event1));
+        assertFalse(isLight(event2));
+        assertTrue(isLight(event3));
+        assertTrue(isLight(event4));
     }
 
     @Test
-    public void checkIfLightIsDoor() {
-        assertFalse(isDoor(new SensorEvent(LIGHT_ON, "Light_1")));
-        assertFalse(isDoor(new SensorEvent(LIGHT_OFF, "Light_2")));
+    public void switchDoorTest() {
+        Door door = new Door(false, "door1");
+        List<Light> lights_1 = Arrays.asList(new Light("1", false), new Light("2", true));
+        List<Door> doors_1 = Arrays.asList(new Door(false, "1"), door);
+
+        Light light = new Light("Light", true);
+        SensorEvent event = new SensorEvent(LIGHT_ON, "OnLight");
+        Room room = new Room(lights_1, doors_1, "justRoom");
+
+        List<Room> rooms = Arrays.asList(room);
+
+        SmartHome smartHome = new SmartHome(rooms);
+
+        switchDoor(smartHome, event, room, door);
+
+        assertTrue(door.getIsOpen());
     }
 
 

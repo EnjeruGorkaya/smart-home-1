@@ -5,12 +5,15 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class AlarmSystemTest {
+
+    //Состояние off
     @Test
     public void testNewSystemIsOff(){
         AlarmSystem alarmSystem = new AlarmSystem();
         assertEquals(AlarmSystemStateEnum.OFF, alarmSystem.getState());
     }
 
+    // Состояние On
     @Test
     public void testNewSystemIsOn(){
         AlarmSystem alarmSystem = new AlarmSystem();
@@ -18,6 +21,7 @@ public class AlarmSystemTest {
         assertEquals(AlarmSystemStateEnum.ON, alarmSystem.getState());
     }
 
+    //Состояние ожидания пароля
     @Test
     public void testSensorEventWaitsForPasswordState(){
         AlarmSystem alarmSystem = new AlarmSystem();
@@ -26,6 +30,7 @@ public class AlarmSystemTest {
         alarmSystem.onEvent(sensorEvent);
         assertEquals(AlarmSystemStateEnum.WAIT_FOR_PASSWORD, alarmSystem.getState());
     }
+
 
     @Test
     public void testOnEventWhenSystemIsOff(){

@@ -23,8 +23,19 @@ public class AlarmSystem implements AlarmSystemState {
         alarmSystem.onEvent(sensorEvent);
     }
 
+    @Override
+    public void enterPassword(String password) {
+
+    }
+
+    @Override
+    public void turnOff() {
+        alarmSystem.turnOff();
+    }
+
     public void setAlarmSystemState(AlarmSystemState newSystemState){
         this.alarmSystem = newSystemState;
     }
+
 
 }

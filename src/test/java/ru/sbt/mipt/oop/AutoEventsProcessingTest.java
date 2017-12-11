@@ -21,8 +21,7 @@ public class AutoEventsProcessingTest {
         String doorId = "1";
         Door door = new Door(true, doorId);
 
-        home.addRoom(new Room(Arrays.asList(light),
-                Arrays.asList(door), "hall"));
+        home.addRoom(new Room(Arrays.asList(light), Arrays.asList(door), "hall"));
 
         SensorEvent event = new SensorEvent(DOOR_CLOSED, doorId);
         autoEventsProcessing.handle(home, event);
