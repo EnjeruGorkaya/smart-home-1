@@ -39,10 +39,10 @@ public class DoorEventProcessingTest {
         SensorEvent event2 = new SensorEvent(LIGHT_OFF, "Light2");
         SensorEvent event3 = new SensorEvent(DOOR_OPEN, "Door1");
         SensorEvent event4= new SensorEvent(DOOR_CLOSED, "Door2");
-        assertFalse(isLight(event1));
-        assertFalse(isLight(event2));
-        assertTrue(isLight(event3));
-        assertTrue(isLight(event4));
+        assertFalse(isDoor(event1));
+        assertFalse(isDoor(event2));
+        assertTrue(isDoor(event3));
+        assertTrue(isDoor(event4));
     }
 
     @Test
@@ -52,7 +52,7 @@ public class DoorEventProcessingTest {
         List<Door> doors_1 = Arrays.asList(new Door(false, "1"), door);
 
         Light light = new Light("Light", true);
-        SensorEvent event = new SensorEvent(LIGHT_ON, "OnLight");
+        SensorEvent event = new SensorEvent(DOOR_OPEN, "OpenDoor");
         Room room = new Room(lights_1, doors_1, "justRoom");
 
         List<Room> rooms = Arrays.asList(room);
