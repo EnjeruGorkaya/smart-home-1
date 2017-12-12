@@ -12,6 +12,7 @@ public class AlarmSystemStateAlarmTest {
     @Test
     public void getState() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
+        alarmSystem.setAlarmSystemState(new AlarmSystemStateAlarm(alarmSystem));
         assertEquals(AlarmSystemStateEnum.ALARM, alarmSystem.getState());
     }
 
@@ -26,6 +27,7 @@ public class AlarmSystemStateAlarmTest {
     @Test
     public void onEvent() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
+        alarmSystem.setAlarmSystemState(new AlarmSystemStateAlarm(alarmSystem));
         SensorEvent event = new SensorEvent(DOOR_OPEN, "what should I write here?");
         assertEquals(AlarmSystemStateEnum.ALARM, alarmSystem.getState());
     }
@@ -40,6 +42,7 @@ public class AlarmSystemStateAlarmTest {
     @Test
     public void turnOffTest() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
+        alarmSystem.setAlarmSystemState(new AlarmSystemStateAlarm(alarmSystem));
         alarmSystem.turnOff();
         assertEquals(AlarmSystemStateEnum.WAIT_FOR_PASSWORD, alarmSystem.getState());
     }
