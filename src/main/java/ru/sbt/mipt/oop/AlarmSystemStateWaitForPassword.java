@@ -10,9 +10,7 @@ public class AlarmSystemStateWaitForPassword implements AlarmSystemState {
     }
 
     @Override
-    public AlarmSystemStateEnum getState() {
-        return AlarmSystemStateEnum.WAIT_FOR_PASSWORD;
-    }
+    public AlarmSystemStateEnum getState() { return AlarmSystemStateEnum.WAIT_FOR_PASSWORD; }
 
     @Override
     public void turnOn() {
@@ -35,5 +33,5 @@ public class AlarmSystemStateWaitForPassword implements AlarmSystemState {
     }
 
     @Override
-    public void turnOff() {return;}
+    public void turnOff() {alarmSystem.setAlarmSystemState(new AlarmSystemStateWaitForPassword(alarmSystem));}
 }

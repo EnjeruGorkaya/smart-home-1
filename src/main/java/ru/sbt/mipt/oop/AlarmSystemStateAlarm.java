@@ -18,7 +18,7 @@ public class AlarmSystemStateAlarm implements AlarmSystemState {
     }
 
     @Override
-    public void turnOn() {return;}
+    public void turnOn() {alarmSystem.setAlarmSystemState(new AlarmSystemStateAlarm(alarmSystem)); }
 
     @Override
     public void onEvent(SensorEvent sensorEvent) {return;}

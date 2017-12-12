@@ -28,6 +28,7 @@ public class AlarmSystemStateOnTest {
         AlarmSystem alarmSystem = new AlarmSystem();
         alarmSystem.turnOn();
         SensorEvent event = new SensorEvent(DOOR_OPEN, "what should I write here?");
+        alarmSystem.onEvent(event);
         assertEquals(AlarmSystemStateEnum.WAIT_FOR_PASSWORD, alarmSystem.getState());
     }
 
@@ -36,7 +37,7 @@ public class AlarmSystemStateOnTest {
         AlarmSystem alarmSystem = new AlarmSystem();
         alarmSystem.turnOn();
         alarmSystem.enterPassword("0000");
-        assertEquals(AlarmSystemStateEnum.WAIT_FOR_PASSWORD, alarmSystem.getState());
+        assertEquals(AlarmSystemStateEnum.OFF, alarmSystem.getState());
     }
 
     @Test

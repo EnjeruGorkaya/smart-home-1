@@ -18,7 +18,8 @@ public class AlarmSystemStateAlarmTest {
     @Test
     public void turnOn() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
-        turnOn();
+        alarmSystem.setAlarmSystemState(new AlarmSystemStateAlarm(alarmSystem));
+        alarmSystem.turnOn();
         assertEquals(AlarmSystemStateEnum.ALARM, alarmSystem.getState());
     }
 
