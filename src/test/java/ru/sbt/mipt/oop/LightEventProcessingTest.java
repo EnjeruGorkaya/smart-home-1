@@ -19,8 +19,7 @@ public class LightEventProcessingTest {
         SmartHome home = new SmartHome();
         String lightId = "1";
         Light light = new Light(lightId, false);
-        home.addRoom(new Room(Arrays.asList(light),
-                Collections.emptyList(), "room"));
+        home.addRoom(new Room(Arrays.asList(light), Collections.emptyList(), "room"));
         SensorEvent event = new SensorEvent(LIGHT_ON, lightId);
         lightEventProcessing.handle(home, event);
         assertTrue(light.isOn());

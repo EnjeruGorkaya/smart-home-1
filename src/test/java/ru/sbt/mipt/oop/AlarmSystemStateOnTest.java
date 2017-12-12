@@ -12,6 +12,7 @@ public class AlarmSystemStateOnTest {
     @Test
     public void getState() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
+        alarmSystem.turnOn();
         assertEquals(AlarmSystemStateEnum.ON, alarmSystem.getState());
     }
 
@@ -19,12 +20,13 @@ public class AlarmSystemStateOnTest {
     public void turnOn() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
         alarmSystem.turnOn();
-        assertEquals(AlarmSystemStateEnum.WAIT_FOR_PASSWORD, alarmSystem.getState());
+        assertEquals(AlarmSystemStateEnum.ON, alarmSystem.getState());
     }
 
     @Test
     public void onEvent() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
+        alarmSystem.turnOn();
         SensorEvent event = new SensorEvent(DOOR_OPEN, "what should I write here?");
         assertEquals(AlarmSystemStateEnum.WAIT_FOR_PASSWORD, alarmSystem.getState());
     }
@@ -32,6 +34,7 @@ public class AlarmSystemStateOnTest {
     @Test
     public void enterCorrectPassword() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
+        alarmSystem.turnOn();
         alarmSystem.enterPassword("0000");
         assertEquals(AlarmSystemStateEnum.WAIT_FOR_PASSWORD, alarmSystem.getState());
     }
@@ -39,6 +42,7 @@ public class AlarmSystemStateOnTest {
     @Test
     public void enterInCorrectPassword() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
+        alarmSystem.turnOn();
         alarmSystem.enterPassword("skjf0");
         assertEquals(AlarmSystemStateEnum.WAIT_FOR_PASSWORD, alarmSystem.getState());
     }
@@ -46,6 +50,7 @@ public class AlarmSystemStateOnTest {
     @Test
     public void turnOffTest() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
+        alarmSystem.turnOn();
         alarmSystem.turnOff();
         assertEquals(AlarmSystemStateEnum.WAIT_FOR_PASSWORD, alarmSystem.getState());
     }
