@@ -51,7 +51,7 @@ public class AlarmSystemStateWaitForPasswordTest {
     }
 
     @Test
-    public void enterInCorrectPassword() throws Exception {
+    public void enterIncorrectPassword() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
         alarmSystem.turnOn();
         SensorEvent event = new SensorEvent(DOOR_OPEN, "what should I write here?");
