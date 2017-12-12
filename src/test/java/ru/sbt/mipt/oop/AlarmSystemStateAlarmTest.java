@@ -33,10 +33,17 @@ public class AlarmSystemStateAlarmTest {
     }
 
     @Test
-    public void enterPassword() throws Exception {
+    public void enterCorrectPassword() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
         alarmSystem.enterPassword("0000");
         assertEquals(AlarmSystemStateEnum.OFF, alarmSystem.getState());
+    }
+
+    @Test
+    public void enterIncorrectPassword() throws Exception {
+        AlarmSystem alarmSystem = new AlarmSystem();
+        alarmSystem.enterPassword("0478");
+        assertEquals(AlarmSystemStateEnum.ALARM, alarmSystem.getState());
     }
 
     @Test

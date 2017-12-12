@@ -29,7 +29,7 @@ public class AlarmSystemStateAlarm implements AlarmSystemState {
             alarmSystem.setAlarmSystemState(new AlarmSystemStateOff(alarmSystem));
         } else {
             // отправить смс владельцу
-            return;
+            alarmSystem.setAlarmSystemState(new AlarmSystemStateAlarm(alarmSystem));
         }
     }
 

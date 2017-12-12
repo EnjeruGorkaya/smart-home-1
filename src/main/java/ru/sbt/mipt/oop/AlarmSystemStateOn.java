@@ -36,7 +36,8 @@ public class AlarmSystemStateOn implements AlarmSystemState {
         if (password == correctPassword) {
             alarmSystem.setAlarmSystemState(new AlarmSystemStateOff(alarmSystem));
         } else {
-            alarmSystem.setAlarmSystemState(new AlarmSystemStateWaitForPassword(alarmSystem));
+            // отправить смс владельцу
+            return;
         }
     }
 
