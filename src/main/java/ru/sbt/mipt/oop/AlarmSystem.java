@@ -25,7 +25,7 @@ public class AlarmSystem implements AlarmSystemState {
 
     @Override
     public void enterPassword(String password) {
-
+        alarmSystem.enterPassword(password);
     }
 
     @Override

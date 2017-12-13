@@ -43,7 +43,7 @@ public class AlarmSystemStateOnTest {
     @Test
     public void enterIncorrectPassword() throws Exception {
         AlarmSystem alarmSystem = new AlarmSystem();
-        alarmSystem.turnOn();
+        alarmSystem.setAlarmSystemState(new AlarmSystemStateOn(alarmSystem));
         alarmSystem.enterPassword("skjf0");
         assertEquals(AlarmSystemStateEnum.WAIT_FOR_PASSWORD, alarmSystem.getState());
     }
