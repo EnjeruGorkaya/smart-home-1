@@ -37,7 +37,7 @@ public class AlarmSystemStateOn implements AlarmSystemState {
             alarmSystem.setAlarmSystemState(new AlarmSystemStateOff(alarmSystem));
         } else {
             // отправить смс владельцу
-            return;
+            alarmSystem.setAlarmSystemState(new AlarmSystemStateWaitForPassword(alarmSystem));
         }
     }
 
