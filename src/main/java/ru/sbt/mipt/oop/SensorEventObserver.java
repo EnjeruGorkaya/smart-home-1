@@ -7,7 +7,7 @@ import java.util.List;
 import static ru.sbt.mipt.oop.Application.getNextSensorEvent;
 
 public class SensorEventObserver {
-    private Collection<EventHandler> eventHandlers = new ArrayList<>();
+    public Collection<EventHandler> eventHandlers = new ArrayList<>();
     private SmartHome smartHome;
 
     public SensorEventObserver(SmartHome smartHome){
@@ -24,6 +24,8 @@ public class SensorEventObserver {
             event = getNextSensorEvent();
         }
     }
+
+
 
     public void addHandler(EventHandler eventHandler){
         eventHandlers.add(eventHandler);
