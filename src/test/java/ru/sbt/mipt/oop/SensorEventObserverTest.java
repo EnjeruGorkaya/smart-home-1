@@ -26,13 +26,16 @@ public class SensorEventObserverTest {
         LightEventProcessing lightEventHandler = mock(LightEventProcessing.class);
         DoorEventProcessing doorEventHandler = mock(DoorEventProcessing.class);
         SensorEvent sensorEvent = mock(SensorEvent.class);
+        AutoEventsProcessing eventsProcessing= mock(AutoEventsProcessing.class);
         SensorEventObserver observer = new SensorEventObserver(smartHome);
 
         // Тест
         observer.addHandler(lightEventHandler);
         observer.addHandler(doorEventHandler);
-        verify(doorEventHandler).handle(smartHome, sensorEvent);
+        observer.addHandler(eventsProcessing);
+        //observer.runEventCycle();
         verify(lightEventHandler).handle(smartHome, sensorEvent);
+        verify(doorEventHandler).handle(smartHome, sensorEvent);
     }
 
 }
